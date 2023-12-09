@@ -1,23 +1,19 @@
-import modell.Item;
-import modell.Knapsack;
+import controller.Greedy;
 
-public class Main {
+
+/**
+ * Run from here. 
+ */
+public class main {
     
-    public static void Main(String[] args)
+    public static void main(String[] args)
     {
         System.out.println("Hello world!");
 
-        Knapsack knapsack = new Knapsack();
+        Greedy greedy = new Greedy();
 
-        //knapsack.add_item();
+        greedy.greedy_algorithm();
         
-
-        for (Item item : knapsack.get_knapsack_items())
-        {
-            System.out.println(item.toString());
-            
-        }
-        //knapsack.calculate_knapsack_value();
 
     }
 }
