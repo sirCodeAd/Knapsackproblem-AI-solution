@@ -44,6 +44,13 @@ public class Knapsack {
         current_weight += item.get_weight();
     }
 
+    public void remove_item(Item item)
+    {
+        knapsack_items.remove(item);
+        value -= item.get_value();
+        current_weight -= item.get_weight();
+    }
+
     public void swap_items(Item item1, Item item2)
     {
         knapsack_items.remove(item1);

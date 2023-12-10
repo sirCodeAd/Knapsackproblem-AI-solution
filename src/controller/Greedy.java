@@ -38,8 +38,8 @@ public class Greedy
     public void greedy_algorithm()
     {   
 
-        create_knapsacks(3);
-        create_items(30);
+        create_knapsacks(4);
+        create_items(20);
         
         /**
          * Sorted list of items relative benefit

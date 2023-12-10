@@ -28,20 +28,24 @@ public class Neighbourhood
     {   
         greedy.greedy_algorithm();
 
-        Knapsack knapsack1 = null;
-        Knapsack knapsack2 = null;
+        //Knapsack knapsack1 = null;
+        //Knapsack knapsack2 = null;
 
         filled_knapsacks = new ArrayList <> (greedy.get_all_knapsacks());
+
         /**
          * We start by iterating the first knapsack,
          * then we iterate the second knapsack and so on.
          *  We get the items from each knapsack and compare.
          */  
         for (int i = 0; i < filled_knapsacks.size(); i++) {
+            
+                Knapsack knapsack1 = filled_knapsacks.get(i);
+                N_total_value += knapsack1.get_value();
+            
             for (int j = i + 1; j < filled_knapsacks.size(); j++) {
 
-                knapsack1 = filled_knapsacks.get(i);
-                knapsack2 = filled_knapsacks.get(j);
+                Knapsack knapsack2 = filled_knapsacks.get(j);
 
                 List<Item> items1 = new ArrayList <> (knapsack1.get_knapsack_items());
                 List<Item> items2 = new ArrayList <> (knapsack2.get_knapsack_items());
@@ -61,9 +65,8 @@ public class Neighbourhood
                 
             }
             System.out.println(knapsack1.toString());
-            N_total_value += knapsack1.get_value();
+            
         }
-        
 
         logger.log(Level.INFO, "TOTAL N VALUE IS {0}", N_total_value);
     }
