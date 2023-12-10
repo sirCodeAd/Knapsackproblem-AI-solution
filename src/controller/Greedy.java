@@ -2,7 +2,6 @@ package controller;
 
 import java.util.logging.Logger;
 import java.util.logging.Level;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -20,6 +19,7 @@ public class Greedy
 {
     private static final Logger logger = Logger.getLogger(Greedy.class.getName());
 
+    private int G_total_value = 0;
     private Random random = new Random();
     private List <Item> all_items;
     private List <Knapsack> all_knapsacks;
@@ -38,8 +38,8 @@ public class Greedy
     public void greedy_algorithm()
     {   
 
-        create_knapsacks(10);
-        create_items(500);
+        create_knapsacks(3);
+        create_items(10);
         
         /**
          * Sorted list of items relative benefit
@@ -72,6 +72,7 @@ public class Greedy
                 while(iterator.hasNext())
                 {
                     Item item = iterator.next();
+
                     if(knapsack.get_current_weight() + item.get_weight() <= knapsack.get_max_weight())
                     {
                         knapsack.add_items(item);
@@ -87,10 +88,13 @@ public class Greedy
                 }
             } while (item_added);
 
+            G_total_value += knapsack.get_value();
+
             System.out.println(knapsack.toString());
             
-            
         }
+
+        logger.log(Level.INFO, "TOTAL G VALUE IS {0}", G_total_value);
 
     }
 
@@ -115,15 +119,15 @@ public class Greedy
      */
     private void create_items(int number)
     {   
-        int rand_nbr_items = 1 + random.nextInt(number);
+        //int rand_nbr_items = 1 + random.nextInt(number);
 
-        for(int i = 0; i <= rand_nbr_items; i++)
+        for(int i = 1; i <= number; i++)
         {
             Item item = new Item();
             all_items.add(item);
         }
 
-        logger.log(Level.INFO, "{0} ITEMS CREATED", rand_nbr_items);
+        logger.log(Level.INFO, "{0} ITEMS CREATED", number);
     }
 
     /**
@@ -132,15 +136,27 @@ public class Greedy
      */
     private void create_knapsacks(int number)
     {
-        int rand_nbr_knapsacks = 1 + random.nextInt(number);
+        //int rand_nbr_knapsacks = 1 + random.nextInt(number);
 
-        for(int i = 0; i <= rand_nbr_knapsacks-1; i++)
+        for(int i = 1; i <= number; i++)
         {
             Knapsack knapsack = new Knapsack();
             all_knapsacks.add(knapsack);
         }
 
-        logger.log(Level.INFO, "{0} KNAPSACKS CREATED", rand_nbr_knapsacks);
+        logger.log(Level.INFO, "{0} KNAPSACKS CREATED", number);
     }
+
+    public List<Item> get_all_items() {
+        return this.all_items;
+    }
+
+    public List<Knapsack> get_all_knapsacks() {
+        return this.all_knapsacks;
+    }
+
+    public int get_total_value() {
+        return this.G_total_value;
+    }   
 
 }

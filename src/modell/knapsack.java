@@ -27,11 +27,29 @@ public class Knapsack {
 
     }
 
+    public boolean allow_swap(Item item1, Item item2)
+    {
+        if(current_weight - item1.get_weight() + item2.get_weight() <= max_weight)
+        {
+            swap_items(item1, item2);
+            return true;
+        }
+        return false;
+    }
+
     public void add_items(Item item)
     {
         knapsack_items.add(item);
         value += item.get_value();
         current_weight += item.get_weight();
+    }
+
+    public void swap_items(Item item1, Item item2)
+    {
+        knapsack_items.remove(item1);
+        knapsack_items.add(item2);
+        value += item2.get_value() - item1.get_value();
+        current_weight += item2.get_weight() - item1.get_weight();
     }
 
     public int get_current_weight() 
@@ -66,7 +84,8 @@ public class Knapsack {
         return "{" +
             " current_weight='" + get_current_weight() + "'" +
             ", max_weight='" + get_max_weight() + "'" +
-            ", value='" + get_value() + "'" +
+            ", value='" + get_value() + "'" + "'" +
+            ", items nbr " + get_knapsack_items().size() + "'" +
             "}";
     }
 
