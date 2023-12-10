@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 import controller.Greedy;
 import controller.Neighbourhood;
 
@@ -9,15 +11,26 @@ public class Main {
     
     public static void main(String[] args)
     {
-        System.out.println("Hello world!");
+        //int count = 0; // Added a counter variable
 
-        Greedy greedy = new Greedy();
+        // while(count < 50){ // Added an end condition to the loop
+            
+        //     try {
+        //         TimeUnit.SECONDS.sleep(1);
+        //     } catch (InterruptedException e) {
+        //         e.printStackTrace();
+        //     }
 
-        Neighbourhood neighbourhood = new Neighbourhood(greedy);
+            System.out.println("Hello world!");
 
-        neighbourhood.Neighbourhood_search();
-        // greedy.greedy_algorithm();
+            Greedy greedy = new Greedy();
 
-        
+            Neighbourhood neighbourhood = new Neighbourhood(greedy);
+
+            neighbourhood.Neighbourhood_search();
+            // greedy.greedy_algorithm();
+
+            //count++; // Increment the counter variable
+        // }
     }
 }

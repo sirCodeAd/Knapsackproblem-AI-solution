@@ -39,7 +39,7 @@ public class Greedy
     {   
 
         create_knapsacks(3);
-        create_items(10);
+        create_items(30);
         
         /**
          * Sorted list of items relative benefit
@@ -157,6 +157,6 @@ public class Greedy
 
     public int get_total_value() {
         return this.G_total_value;
-    }   
+    }
 
 }

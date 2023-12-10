@@ -48,8 +48,8 @@ public class Knapsack {
     {
         knapsack_items.remove(item1);
         knapsack_items.add(item2);
-        value += item2.get_value() - item1.get_value();
-        current_weight += item2.get_weight() - item1.get_weight();
+        value = value + item2.get_value() - item1.get_value();
+        current_weight = current_weight + item2.get_weight() - item1.get_weight();
     }
 
     public int get_current_weight() 

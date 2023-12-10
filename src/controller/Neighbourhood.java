@@ -28,7 +28,8 @@ public class Neighbourhood
     {   
         greedy.greedy_algorithm();
 
-        
+        Knapsack knapsack1 = null;
+        Knapsack knapsack2 = null;
 
         filled_knapsacks = new ArrayList <> (greedy.get_all_knapsacks());
         /**
@@ -39,33 +40,34 @@ public class Neighbourhood
         for (int i = 0; i < filled_knapsacks.size(); i++) {
             for (int j = i + 1; j < filled_knapsacks.size(); j++) {
 
-                Knapsack knapsack1 = filled_knapsacks.get(i);
-                Knapsack knapsack2 = filled_knapsacks.get(j);
+                knapsack1 = filled_knapsacks.get(i);
+                knapsack2 = filled_knapsacks.get(j);
 
                 List<Item> items1 = new ArrayList <> (knapsack1.get_knapsack_items());
                 List<Item> items2 = new ArrayList <> (knapsack2.get_knapsack_items());
         
                 for (Item item1 : items1) {
                     for (Item item2 : items2) {
-                        
-                        // logger.log(Level.INFO, "ITEM 1: {0}", item1);
-                        // logger.log(Level.INFO, "ITEM 2: {0}", item2);
 
                         if((knapsack1.get_value() + item2.get_value()) - item1.get_value() > knapsack1.get_value()
                             &&  ((knapsack1.get_current_weight() + item2.get_weight())  - item1.get_weight()) <= knapsack1.get_max_weight()) {
                             
                             knapsack1.swap_items(item1, item2);
                             knapsack2.swap_items(item2, item1);
-                            //logger.log(Level.INFO, "SWAPPED {0} WITH {1}", new Object[]{item1, item2}); 
+                 
                         }
                     }
                 }
-                N_total_value += knapsack1.get_value();
-                //System.out.println(knapsack1.toString());
+                
             }
+            System.out.println(knapsack1.toString());
+            N_total_value += knapsack1.get_value();
         }
+        
 
         logger.log(Level.INFO, "TOTAL N VALUE IS {0}", N_total_value);
-    }        
+    }
+    
+    
 
 }
