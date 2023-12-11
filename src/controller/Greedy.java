@@ -22,12 +22,14 @@ public class Greedy
     private int G_total_value = 0;
     private Random random = new Random();
     private List <Item> all_items;
+    private List <Item> unused_Items;
     private List <Knapsack> all_knapsacks;
     
     public Greedy()
     {
         all_items       = new ArrayList<>();
         all_knapsacks   = new ArrayList<>();
+        unused_Items    = new ArrayList<>();
     }
 
     /**
@@ -38,8 +40,8 @@ public class Greedy
     public void greedy_algorithm()
     {   
 
-        create_knapsacks(4);
-        create_items(20);
+        create_knapsacks(100);
+        create_items(1000);
         
         /**
          * Sorted list of items relative benefit
@@ -80,10 +82,6 @@ public class Greedy
                         item_added = true;
                         break;
                     }
-                    else
-                    {
-                        break;
-                    }
 
                 }
             } while (item_added);
@@ -93,8 +91,14 @@ public class Greedy
             System.out.println(knapsack.toString());
             
         }
+        
+        if(!all_items.isEmpty())
+            {
+                unused_Items.addAll(all_items);
+            }
 
         logger.log(Level.INFO, "TOTAL G VALUE IS {0}", G_total_value);
+        logger.log(Level.INFO, "size of unused items {0}", unused_Items.size());
 
     }
 
@@ -157,6 +161,10 @@ public class Greedy
 
     public int get_total_value() {
         return this.G_total_value;
+    }
+
+    public List<Item> get_unused_items() {
+        return this.unused_Items;
     }
 
 }

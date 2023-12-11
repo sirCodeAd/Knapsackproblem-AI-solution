@@ -2,6 +2,7 @@ import java.util.concurrent.TimeUnit;
 
 import controller.Greedy;
 import controller.Neighbourhood;
+import modell.Knapsack;
 
 
 /**
@@ -24,6 +25,7 @@ public class Main {
             System.out.println("Hello world!");
 
             Greedy greedy = new Greedy();
+            //greedy.greedy_algorithm();
 
             Neighbourhood neighbourhood = new Neighbourhood(greedy);
 
