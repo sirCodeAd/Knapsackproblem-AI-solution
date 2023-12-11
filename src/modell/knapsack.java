@@ -54,10 +54,11 @@ public class Knapsack {
     public void swap_items(Item item1, Item item2)
     {
         if (!get_knapsack_items().contains(item2)){
-        knapsack_items.remove(item1);
-        knapsack_items.add(item2);
-        value = value + item2.get_value() - item1.get_value();
-        current_weight = current_weight + item2.get_weight() - item1.get_weight();
+            
+            knapsack_items.remove(item1);
+            knapsack_items.add(item2);
+            value = value + item2.get_value() - item1.get_value();
+            current_weight = current_weight + item2.get_weight() - item1.get_weight();
         }
     }
 

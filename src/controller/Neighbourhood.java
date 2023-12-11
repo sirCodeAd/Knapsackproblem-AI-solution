@@ -51,48 +51,32 @@ public class Neighbourhood
                     Knapsack knapsack2 = filled_knapsacks.get(j);
 
                     List<Item> items1 = new ArrayList <> (knapsack1.get_knapsack_items());
-                    List<Item> items2 = new ArrayList <> (knapsack2.get_knapsack_items());
+                    List<Item> items2 = new ArrayList<>(knapsack2.get_knapsack_items());
+
                     
-                    outerloop:
                     for (Item item1 : items1) {
                         for (Item item2 : items2) {
-                        
-                            /**
-                             * DETTA MÅSTE FIXAS. ANNAN LOGIK BEHÖVS
-                             */
-                            if(((knapsack1.get_current_weight() - item1.get_weight() + item2.get_weight()) <= knapsack1.get_max_weight())
-                                && ((knapsack2.get_current_weight() - item2.get_weight())  + item1.get_weight()) <= knapsack2.get_max_weight() 
-                                ){
-                            
+                            if (((knapsack1.get_current_weight() - item1.get_weight() + item2.get_weight()) <= knapsack1.get_max_weight())
+                                    && ((knapsack2.get_current_weight() - item2.get_weight()) + item1.get_weight()) <= knapsack2.get_max_weight()) {
+
                                 knapsack1.swap_items(item1, item2);
                                 knapsack2.swap_items(item2, item1);
 
-                                break outerloop;
+                                items_swapped = true;
+                                break;
                             }
-                        // else
-                        // {
-                        //     for(int g = unused_items.size() - 1; g >= 0; g--){
-                        //         Item item = unused_items.get(g);
-                        //         if(knapsack1.get_value() + item.get_value() - item1.get_value() > knapsack1.get_value()
-                        //             && knapsack1.get_current_weight() + item.get_weight() <= knapsack1.get_max_weight()){
-                        //             knapsack1.remove_item(item1);
-                        //             knapsack1.add_items(item);
-                        //             unused_items.remove(item);
-                        //         }
-                        //     }
-                        // }
+                        }
+                        if (items_swapped) {
+                            break;
+                        }
                     }
-                    if (knapsack1.get_current_weight()==knapsack1.get_max_weight()) {
-                        break;
-                    }
-                }
-                if (knapsack1.get_current_weight()==knapsack1.get_max_weight()) {
+                    if (knapsack1.get_current_weight() == knapsack1.get_max_weight()) {
                         break;
                     }
             }
+
             N_total_value += knapsack1.get_value();
                 
-            // }while( !items_swapped );
             System.out.println(knapsack1.toString());
             
         }
