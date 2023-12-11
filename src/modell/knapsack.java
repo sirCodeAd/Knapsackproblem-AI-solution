@@ -92,10 +92,12 @@ public class Knapsack {
     public String toString() {
 
         return "{" +
+            "-----------------------------------------------------------------\n" +
             " current_weight='" + get_current_weight() + "'" +
             ", max_weight='" + get_max_weight() + "'" +
             ", value='" + get_value() + "'" + "'" +
             ", items nbr " + get_knapsack_items().size() + "'" +
+            "\n----------------------------------------------------------------" +
             "}";
     }
 

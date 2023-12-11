@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import modell.Item;
 import modell.Knapsack;
@@ -20,7 +19,6 @@ public class Greedy
     private static final Logger logger = Logger.getLogger(Greedy.class.getName());
 
     private int G_total_value = 0;
-    private Random random = new Random();
     private List <Item> all_items;
     private List <Item> unused_Items;
     private List <Knapsack> all_knapsacks;
@@ -40,8 +38,8 @@ public class Greedy
     public void greedy_algorithm()
     {   
 
-        create_knapsacks(10);
-        create_items(1000);
+        create_knapsacks(4);
+        create_items(100);
         
         /**
          * Sorted list of items relative benefit
@@ -123,7 +121,7 @@ public class Greedy
      */
     private void create_items(int number)
     {   
-        //int rand_nbr_items = 1 + random.nextInt(number);
+      
 
         for(int i = 1; i <= number; i++)
         {
@@ -140,7 +138,7 @@ public class Greedy
      */
     private void create_knapsacks(int number)
     {
-        //int rand_nbr_knapsacks = 1 + random.nextInt(number);
+
 
         for(int i = 1; i <= number; i++)
         {
