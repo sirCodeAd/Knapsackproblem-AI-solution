@@ -40,8 +40,8 @@ public class Greedy
     public void greedy_algorithm()
     {   
 
-        create_knapsacks(4);
-        create_items(30);
+        create_knapsacks(10);
+        create_items(1000);
         
         /**
          * Sorted list of items relative benefit
@@ -98,7 +98,7 @@ public class Greedy
             }
 
         logger.log(Level.INFO, "TOTAL G VALUE IS {0}", G_total_value);
-        logger.log(Level.INFO, "size of unused items {0}", unused_Items.size());
+        logger.log(Level.INFO, "Number of unused items {0}", unused_Items.size());
 
     }
 

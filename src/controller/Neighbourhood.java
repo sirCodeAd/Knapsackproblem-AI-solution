@@ -70,7 +70,38 @@ public class Neighbourhood
                             break;
                         }
                     }
-                    if (knapsack1.get_current_weight() == knapsack1.get_max_weight()) {
+                    
+                    /**
+                     * When knapsacks finnished swithing items
+                     * we iterate and add the unused items to the knapsack
+                     * if weight capacity is not reached.
+                     */
+                    if (knapsack1.get_current_weight() < knapsack1.get_max_weight()) {
+                        
+                        Iterator<Item> iterator = unused_items.iterator();
+                        
+                        while (iterator.hasNext()) {
+                            
+                            Item item = iterator.next();
+                            
+                            if (knapsack1.get_current_weight() + item.get_weight() <= knapsack1.get_max_weight()) {
+                                
+                                if(!knapsack1.get_knapsack_items().contains(item) && !knapsack2.get_knapsack_items().contains(item)){
+                                
+                                    knapsack1.add_items(item);
+                                    iterator.remove();
+                         
+                                }
+                                else{
+                                    
+                                    iterator.remove();
+                                }
+
+                            }
+                        }
+                    }
+                    else {
+
                         break;
                     }
             }
@@ -81,8 +112,10 @@ public class Neighbourhood
             
         }
         
+        logger.log(Level.INFO, "New number of unused items {0}", unused_items.size());
 
         logger.log(Level.INFO, "TOTAL N VALUE IS {0}", N_total_value);
+
     }
     
     
